@@ -63,7 +63,8 @@
       <tr *ngFor="let caseId of caseIdList">
         <th scope="row">{{ caseId }}</th>
         <td *ngFor="let activity of visibleActivities">
-          {{ getCaseStatus(caseId, activity).title }}
+          {{ caseStatus = getCaseStatus(caseId, activity).title }}
+          Form Type: {{ caseStatus.formType }}
         </td>
       </tr>
     </tbody>

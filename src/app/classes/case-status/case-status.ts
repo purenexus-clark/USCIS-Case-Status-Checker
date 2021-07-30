@@ -3,5 +3,6 @@ export class CaseStatus {
   public caseId: string;
   public rawText: string;
   public text: string;
+  public formType: string;
   public title: string;
 }

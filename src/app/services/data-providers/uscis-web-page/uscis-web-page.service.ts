@@ -51,9 +51,17 @@ export class UscisWebPageService implements IDataProvider {
     // if no error
     var infoBody = document.querySelector(".box3.uscis-seal");
 
+    var formTypeFinderRegex = /[A-Z]{1}-[0-9]{3}/g
+
     let rowsTextCenter = infoBody.querySelector(".rows.text-center");
     caseStatus.title = rowsTextCenter.querySelector("h1").innerText.trim();
     caseStatus.text = rowsTextCenter.querySelector("p").innerText.trim();
+    var matches = caseStatus.text.match(formTypeFinderRegex)
+    if (matches != null) {
+      caseStatus.formType = matches[0]
+    } else {
+      caseStatus.formType = "Unknown"
+    }
     caseStatus.rawText = rowsTextCenter.innerHTML.trim();
 
     return caseStatus;
